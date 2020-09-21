@@ -1,11 +1,8 @@
-const app = require("express").Router();
-const client = require("../index");
+const express = require('express');
+const app = express.Router();
 
-app.get("/", async (req, res) => {
-  res.render("index", {
-    bot: client,
-    user: req.session.user || null
-  });
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 module.exports = app;
