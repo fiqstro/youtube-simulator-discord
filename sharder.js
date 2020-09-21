@@ -1,13 +1,11 @@
 const Discord = require('discord.js');
-const shard = new Discord.ShardingManager("./index.js", {
-  autoSpawn: true,
-  token: process.env.TOKEN,
-  totalShards: "auto"
+
+let Sharder = new Discord.ShardingManager("./index.js", {
+  token: process.env.token
 });
 
-shard.spawn();
+Sharder.spawn(2);
 
-shard.on("launch", (shards) => {
-  console.log(`[${(new Date())}] - Spawned ${shards.manager.totalShards} Shard 👌`);
+Sharder.on("launch", (shards) => {
+  console.log(`[SUCSESS] Spawned ${shards.manager.totalShards} shards!`);
 });
-
